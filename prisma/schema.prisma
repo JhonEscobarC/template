@@ -1,0 +1,108 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model personal_data {
+  id        Int      @id @default(autoincrement())
+  name      String
+  business  String
+  id_number String   @unique
+  password  String?
+  webs      webs[]
+}
+
+model webs {
+  id        Int      @id @default(autoincrement())
+  owner_id  Int
+  color1    String
+  color2    String
+  color3    String
+  link1     String?
+  link2     String?
+  link3     String?
+
+  owner     personal_data @relation(fields: [owner_id], references: [id])
+  header    header[]
+  home      home[]
+  about_us  about_us[]
+  catalogo  catalogo[]
+  members   members[]
+  contact_us contact_us[]
+  footer    footer[]
+}
+
+model header {
+  id      Int    @id @default(autoincrement())
+  pagina  Int
+  logo    String?
+
+  pagina_rel webs @relation(fields: [pagina], references: [id])
+}
+
+model home {
+  id      Int    @id @default(autoincrement())
+  pagina  Int
+  titulo  String?
+  imagen  String?
+
+  pagina_rel webs @relation(fields: [pagina], references: [id])
+}
+
+model about_us {
+  id      Int    @id @default(autoincrement())
+  pagina  Int
+  titulo  String?
+  texto   String?
+  imagen  String?
+
+  pagina_rel webs @relation(fields: [pagina], references: [id])
+}
+
+model catalogo {
+  id      Int    @id @default(autoincrement())
+  pagina  Int
+  texto   String?
+  titulo  String?
+  imagen  String?
+
+  pagina_rel webs @relation(fields: [pagina], references: [id])
+}
+
+model members {
+  id      Int    @id @default(autoincrement())
+  pagina  Int
+  texto   String?
+  titulo  String?
+  imagen  String?
+
+  pagina_rel webs @relation(fields: [pagina], references: [id])
+}
+
+model contact_us {
+  id      Int    @id @default(autoincrement())
+  pagina  Int
+  texto   String?
+  imagen  String?
+  pagina_rel webs @relation(fields: [pagina], references: [id])
+}
+
+model footer {
+  id      Int    @id @default(autoincrement())
+  pagina  Int
+  logo    String?
+  slogan  String?
+  correo  String?
+  numero  String?
+  logo1   String?
+  logo2   String?
+  logo3   String?
+
+  pagina_rel webs @relation(fields: [pagina], references: [id])
+}
