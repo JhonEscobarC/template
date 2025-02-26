@@ -13,7 +13,7 @@ export async function GET(req) {
                     "Access-Control-Allow-Headers": "Content-Type"
                 }, });
         }
-
+        console.log("pageId", pageId)
         const web = await prisma.webs.findUnique({
             where: { id: parseInt(pageId) }, // Filtrar por el ID de la página
             include: {
@@ -22,11 +22,11 @@ export async function GET(req) {
                 home: true,
                 about_us: true,
                 catalogo: true,
-                members: true,
                 contact_us: true,
                 footer: true,
             },
         });
+        console.log('No erores');
         if (!web) {
             return new Response(JSON.stringify({ error: "Page not found" }), { status: 404, headers: {
                     "Content-Type": "application/json",

@@ -7,7 +7,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 2;
 }
 
 .logo img {
@@ -22,13 +22,13 @@
 
 .navbar a {
     text-decoration: none;
-    color: #333;
+    color: var(--hoverColor);
     font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
 .navbar a:hover {
-    color: #25d366;
+    color: var(--shadowColor);
 }
 
 @media (max-width: 768px) {

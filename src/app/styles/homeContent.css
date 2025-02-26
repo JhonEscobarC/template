@@ -13,7 +13,7 @@
 .main-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
+    color: var(--hoverColor);
     margin-bottom: 2rem;
 }
 
@@ -26,6 +26,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
 }
 
 .home-main-image:hover {
@@ -53,12 +54,12 @@
 }
 
 .navHome a:hover {
-    background-color: #25d366;
+    background-color: var(--shadowColor);
     color: white;
 }
 
 .homeBorder {
-    border: 2px solid #25d366;
+    border: 2px solid var(--shadowColor);
 }
 
 @media (max-width: 768px) {

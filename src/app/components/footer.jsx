@@ -9,11 +9,6 @@ const TheFooter = ({ webData }) => {
             <div className="slogan-footer">
                 <h3>{webData.footer.slogan}</h3>
             </div>
-            <div className="navigation-footer">
-                <a href="#Home">Inicio</a>
-                <a href="#ContactUs">Contáctanos</a>
-                <a href="#About">Nosotros</a>
-            </div>
             <div className="social-media">
                 <h3>{webData.footer.correo}</h3>
                 <h3>{webData.footer.numero}</h3>

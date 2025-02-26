@@ -1,6 +1,6 @@
 .footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--secondBackground);
+    color: var(--hoverColor);
     padding: 2rem 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -16,22 +16,6 @@
 .slogan-footer h3 {
     font-size: 1.2rem;
     font-weight: bold;
-}
-
-.navigation-footer {
-    display: flex;
-    gap: 1rem;
-}
-
-.navigation-footer a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.navigation-footer a:hover {
-    color: #25d366;
 }
 
 .social-media {
@@ -50,12 +34,40 @@
 }
 
 .media-logo-footer {
-    height: 30px;
-    transition: transform 0.3s ease;
+    height: 40px; /* Aumentamos el tamaño */
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 50%; /* Para darle un efecto más redondeado */
 }
 
+/* Efecto hover */
 .media-logo-footer:hover {
-    transform: scale(1.1);
+    transform: scale(1.2); /* Crece un poco */
+    filter: blur(2px); /* Agrega desenfoque */
+}
+
+/* Agregamos sombras de colores para cada red social */
+.facebook-logo:hover {
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.8); /* Azul de Facebook */
+}
+
+.instagram-logo:hover {
+    box-shadow: 0 0 15px rgba(225, 48, 108, 0.8); /* Rosa de Instagram */
+}
+
+.whatsapp-logo:hover {
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.8); /* Verde de WhatsApp */
+}
+
+.facebook-logo{
+    background-color: rgba(24, 119, 242, 0.8);
+}
+
+.instagram-logo{
+    background-color: rgba(225, 48, 108, 0.8);
+}
+
+.whatsapp-logo{
+    background-color: rgba(37, 211, 102, 0.8);
 }
 
 @media (max-width: 768px) {

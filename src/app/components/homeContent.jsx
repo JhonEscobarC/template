@@ -10,7 +10,7 @@ const HomeContent = ({ webData }) => {
                 </div>
                 <div className="main-text">
                     <nav className="navHome">
-                        <a href="#About">Conócenos</a>
+                        <a href="#About" className="homeBorder">Conócenos</a>
                         <a href="#Catalogue" className="homeBorder">Productos</a>
                         <a href="#ContactUs" className="homeBorder">Contáctanos</a>
                     </nav>

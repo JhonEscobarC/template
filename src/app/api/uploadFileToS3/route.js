@@ -6,7 +6,7 @@ export async function POST(req) {
         console.log("Init uploadFileToS3");
         const formData = await req.formData();
         const file = formData.get("file");
-
+        const folder = formData.get("folder");
         if (!file) return new Response(JSON.stringify({ success: false, message: "No file provided" }), { status: 400 });
         const fileName = `${Date.now()}_${file.name}`;
         const arrayBuffer = await file.arrayBuffer();
@@ -20,7 +20,7 @@ export async function POST(req) {
          });
         const params = {
           Bucket: process.env.BUCKET_NAME,
-          Key: fileName, // Nombre único
+          Key: `${folder}/${fileName}`, // Nombre único
           ContentType: file.type,
           Body: buffer, // Enviar como Buffer
           ACL: "public-read",

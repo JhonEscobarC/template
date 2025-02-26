@@ -1,108 +1,91 @@
-// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model personal_data {
-  id        Int      @id @default(autoincrement())
-  name      String
-  business  String
-  id_number String   @unique
-  password  String?
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(255)
+  business  String? @db.VarChar(255)
+  id_number String?  @db.VarChar(255)
+  password  String? @db.VarChar(255)
   webs      webs[]
 }
 
 model webs {
-  id        Int      @id @default(autoincrement())
-  owner_id  Int
-  color1    String
-  color2    String
-  color3    String
-  link1     String?
-  link2     String?
-  link3     String?
-
-  owner     personal_data @relation(fields: [owner_id], references: [id])
-  header    header[]
-  home      home[]
-  about_us  about_us[]
-  catalogo  catalogo[]
-  members   members[]
+  id         Int           @id @default(autoincrement())
+  owner_id   Int
+  color1     String?       @db.VarChar(7)
+  color2     String?       @db.VarChar(7)
+  color3     String?       @db.VarChar(7)
+  link1      String?       @db.VarChar(255)
+  link2      String?       @db.VarChar(255)
+  link3      String?
+  developer  Int?
+  about_us   about_us[]
+  catalogo   catalogo[]
   contact_us contact_us[]
-  footer    footer[]
+  footer     footer[]
+  header     header[]
+  home       home[]
+  owner      personal_data @relation(fields: [owner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model header {
-  id      Int    @id @default(autoincrement())
-  pagina  Int
-  logo    String?
-
-  pagina_rel webs @relation(fields: [pagina], references: [id])
+  id         Int     @id @default(autoincrement())
+  pagina     Int
+  logo       String? @db.VarChar(255)
+  pagina_rel webs    @relation(fields: [pagina], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model home {
-  id      Int    @id @default(autoincrement())
-  pagina  Int
-  titulo  String?
-  imagen  String?
-
-  pagina_rel webs @relation(fields: [pagina], references: [id])
+  id         Int     @id @default(autoincrement())
+  pagina     Int
+  titulo     String?  @db.VarChar(255)
+  imagen     String? @db.VarChar(255)
+  pagina_rel webs    @relation(fields: [pagina], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model about_us {
-  id      Int    @id @default(autoincrement())
-  pagina  Int
-  titulo  String?
-  texto   String?
-  imagen  String?
-
-  pagina_rel webs @relation(fields: [pagina], references: [id])
+  id         Int     @id @default(autoincrement())
+  pagina     Int
+  titulo     String? @db.VarChar(255)
+  texto      String?
+  imagen     String? @db.VarChar(255)
+  pagina_rel webs    @relation(fields: [pagina], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model catalogo {
-  id      Int    @id @default(autoincrement())
-  pagina  Int
-  texto   String?
-  titulo  String?
-  imagen  String?
-
-  pagina_rel webs @relation(fields: [pagina], references: [id])
-}
-
-model members {
-  id      Int    @id @default(autoincrement())
-  pagina  Int
-  texto   String?
-  titulo  String?
-  imagen  String?
-
-  pagina_rel webs @relation(fields: [pagina], references: [id])
+  id         Int     @id @default(autoincrement())
+  pagina     Int
+  texto      String?
+  titulo     String? @db.VarChar(255)
+  imagen     String? @db.VarChar(255)
+  pagina_rel webs    @relation(fields: [pagina], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model contact_us {
-  id      Int    @id @default(autoincrement())
-  pagina  Int
-  texto   String?
-  imagen  String?
-  pagina_rel webs @relation(fields: [pagina], references: [id])
+  id         Int     @id @default(autoincrement())
+  pagina     Int
+  texto      String?
+  link       String? @db.VarChar(255)
+  imagen     String? @db.VarChar(255)
+  pagina_rel webs    @relation(fields: [pagina], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model footer {
-  id      Int    @id @default(autoincrement())
-  pagina  Int
-  logo    String?
-  slogan  String?
-  correo  String?
-  numero  String?
-  logo1   String?
-  logo2   String?
-  logo3   String?
-
-  pagina_rel webs @relation(fields: [pagina], references: [id])
+  id         Int     @id @default(autoincrement())
+  pagina     Int
+  logo       String? @db.VarChar(255)
+  slogan     String? @db.VarChar(255)
+  correo     String? @db.VarChar(255)
+  numero     String? @db.VarChar(50)
+  logo1      String? @db.VarChar(255)
+  logo2      String? @db.VarChar(255)
+  logo3      String? @db.VarChar(255)
+  pagina_rel webs    @relation(fields: [pagina], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
