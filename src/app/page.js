@@ -174,7 +174,7 @@ const Home = () => {
 
       return updatedData;
     });
-
+    
     document.documentElement.style.setProperty("--secondBackground", formData.color1);
     document.documentElement.style.setProperty("--shadowColor", formData.color2);
     document.documentElement.style.setProperty("--hoverColor", formData.color3);
