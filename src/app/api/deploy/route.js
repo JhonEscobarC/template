@@ -18,9 +18,9 @@ export async function POST(req) {
                 name: business,
                 gitSource: {
                     type: "github",
-                    repo: "JhonEscobarC/template",
+                    repo: "JhonEscobarC/officialTemplate",
                     ref: "main",
-                    repoId: 937195248,
+                    repoId: 939816020,
                 },
                 projectSettings: {
                     framework: "nextjs",
@@ -69,9 +69,9 @@ export async function POST(req) {
                 target: 'production',
                 gitSource: {
                     type: "github",
-                    repo: "JhonEscobarC/template",
+                    repo: "JhonEscobarC/officialTemplate",
                     ref: "main",
-                    repoId: 937195248,
+                    repoId: 939816020,
                 },
                 projectSettings: {
                     framework: "nextjs",
